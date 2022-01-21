@@ -1,2 +1,2 @@
 def run_sql():
-    return "OK"
+    return "fake result"
