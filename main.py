@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 
+from services import get_ip
 from sql_runner.manager import run_sql
 
 app = FastAPI()
@@ -11,6 +12,7 @@ async def root_endpoint():
 
 
 @app.get("/run-sql")
-async def run_sql_endpoint():
+def run_sql_endpoint():
     result = run_sql()
-    return {"message": result}
+    ip = get_ip()
+    return {"message": result, "ip": ip}
