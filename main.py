@@ -11,6 +11,6 @@ async def root_endpoint():
 
 
 @app.get("/run-sql")
-async def run_sql_endpoint():
+def run_sql_endpoint():
     result = run_sql()
     return {"message": result}
