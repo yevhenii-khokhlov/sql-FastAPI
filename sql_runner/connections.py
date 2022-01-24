@@ -13,11 +13,10 @@ def get_cursor():
             'UID=' + settings.db_username + '; '
             'PWD=' + settings.db_password,
 
-            timeout=15,
+            timeout=5,
         )
         cursor = conn_tk.cursor()
-    except Exception as err:
-        print("LOG Error in module", __name__, err.__str__())
-        cursor = None
+        return cursor
 
-    return cursor
+    except Exception as err:
+        raise ConnectionError(err.__str__())

@@ -14,5 +14,9 @@ async def root_endpoint():
 
 @app.get("/run-sql")
 def run_sql_endpoint():
-    result = run_sql()
-    return {"success": True, "sql": result}
+    try:
+        result = run_sql()
+        return {"success": True, "sql": result}
+
+    except Exception as err:
+        return {"success": False, "error": err.__str__()}
