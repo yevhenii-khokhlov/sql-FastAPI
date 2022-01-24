@@ -1,1 +1,1 @@
-web: bin/qgtunnel gunicorn -w 3 -k uvicorn.workers.UvicornWorker main:app
+web: bin/qgtunnel bundle exec unicorn -p $PORT -c ./config/unicorn.rb
