@@ -11,6 +11,7 @@ class Settings(BaseSettings):
     db_database: str
     db_server: str
     db_password: str
+    quotaguardstatic_url: str
 
     class Config:
         env_file = ".env"
