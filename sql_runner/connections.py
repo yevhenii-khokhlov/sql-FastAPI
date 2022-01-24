@@ -11,7 +11,9 @@ def get_cursor():
             'SERVER=' + settings.db_server + '; '
             'DATABASE=' + settings.db_database + '; '
             'UID=' + settings.db_username + '; '
-            'PWD=' + settings.db_password
+            'PWD=' + settings.db_password,
+
+            timeout=15,
         )
         cursor = conn_tk.cursor()
     except Exception as err:
