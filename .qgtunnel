@@ -1,0 +1,6 @@
+
+[qgtunnel.0]
+accept = "127.0.0.1:1443"
+connect = "sql-fastapi.herokuapp.com:1443"
+encrypted = false
+transparent = false
