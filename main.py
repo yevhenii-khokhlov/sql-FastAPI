@@ -8,11 +8,11 @@ app = FastAPI()
 
 @app.get("/")
 async def root_endpoint():
-    return {"success": True}
+    ip = get_ip()
+    return {"success": True, "ip": ip}
 
 
 @app.get("/run-sql")
 def run_sql_endpoint():
     result = run_sql()
-    ip = get_ip()
-    return {"success": True, "ip": ip, "sql": result}
+    return {"success": True, "sql": result}
