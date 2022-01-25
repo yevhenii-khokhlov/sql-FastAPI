@@ -9,8 +9,7 @@ def get_cursor():
         conn_tk = pyodbc.connect(
             'DRIVER={ODBC Driver 17 for SQL Server}; '
             'PORT=1433;'
-            # f'SERVER={settings.db_server}; '
-            'SERVER=127.0.0.1; '
+            f'SERVER={settings.db_server}; '
             f'DATABASE={settings.db_database}; '
             f'UID={settings.db_username}; '
             f'PWD={settings.db_password}',
