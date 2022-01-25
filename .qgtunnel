@@ -1,5 +1,5 @@
 [qgtunnel.TK_tunnel]
 accept = "127.0.0.1:1443"
-connect = "https:443"
+connect = "13.81.168.24:1443"
 encrypted = false
-transparent = false
+transparent = true
