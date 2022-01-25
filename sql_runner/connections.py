@@ -13,8 +13,8 @@ def get_cursor():
             f'DATABASE={settings.db_database}; '
             f'UID={settings.db_username}; '
             f'PWD={settings.db_password}',
-
-            timeout=5,
+            sslmode=True,
+            timeout=0,
         )
         cursor = conn_tk.cursor()
         return cursor
