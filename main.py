@@ -21,6 +21,10 @@ async def root_endpoint():
 @app.get("/run-sql")
 async def run_sql_endpoint(request: Request):
     """
+    Supports queries that return data as a two-dimensional table.
+    Does not support multiply query like:
+    'select * from users; select * from posts;'
+
     :param request:
 
         "selector": str
