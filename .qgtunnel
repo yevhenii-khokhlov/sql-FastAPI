@@ -1,6 +1,0 @@
-
-[qgtunnel.TK_tunnel]
-accept = "127.0.0.1:1433"
-connect = "13.81.168.24:1443"
-encrypted = false
-transparent = true
