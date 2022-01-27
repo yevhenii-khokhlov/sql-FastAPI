@@ -2,9 +2,10 @@ import pyodbc
 
 from config import get_settings
 
+settings = get_settings()
+
 
 def get_cursor():
-    settings = get_settings()
     try:
         conn_tk = pyodbc.connect(
             'DRIVER={ODBC Driver 17 for SQL Server}; '

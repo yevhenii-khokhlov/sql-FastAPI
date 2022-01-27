@@ -2,6 +2,7 @@ import json
 
 from fastapi import FastAPI, Request
 
+from services import is_token_valid
 from sql_runner.manager import run_sql
 
 app = FastAPI()
@@ -29,9 +30,13 @@ async def run_sql_endpoint(request: Request):
         "success": bool,
         "query_result": [[]] or "error": str
     """
+    raw_body = await request.body()
+    body = json.loads(raw_body)
+
+    if not is_token_valid(request.headers):
+        return {"success": False, "error": "invalid api_token"}
+
     try:
-        raw_body = await request.body()
-        body = json.loads(raw_body)
         selector = body.get('selector')
         result = run_sql(selector)
 

@@ -1,6 +1,13 @@
-import socket
+from config import get_settings
 
 
-def get_ip():
-    ip = socket.gethostbyname(socket.gethostname())
-    return ip
+settings = get_settings()
+
+
+def is_token_valid(headers):
+    api_token = headers.get('api_token', '')
+
+    if api_token == settings.api_token:
+        return True
+
+    return False
