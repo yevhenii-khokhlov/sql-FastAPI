@@ -18,7 +18,7 @@ async def root_endpoint():
     return {"success": True}
 
 
-@app.get("/run-sql")
+@app.post("/run-sql")
 async def run_sql_endpoint(request: Request):
     """
     Supports queries that return data as a two-dimensional table.
