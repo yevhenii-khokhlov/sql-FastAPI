@@ -34,13 +34,13 @@ async def run_sql_endpoint(request: Request):
         "success": bool,
         "query_result": [[]] or "error": str
     """
-    raw_body = await request.body()
-    body = json.loads(raw_body)
-
-    if not is_token_valid(request.headers):
-        return {"success": False, "error": "invalid api_token"}
-
     try:
+        raw_body = await request.body()
+        body = json.loads(raw_body)
+
+        if not is_token_valid(request.headers):
+            return {"success": False, "error": "invalid api_token"}
+
         selector = body.get('selector')
         result = run_sql(selector)
 
