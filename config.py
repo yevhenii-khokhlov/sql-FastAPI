@@ -12,6 +12,9 @@ class Settings(BaseSettings):
     db_server: str
     db_password: str
     api_token: str
+    memcachier_servers: str
+    memcachier_username: str
+    memcachier_password: str
 
     class Config:
         env_file = ".env"

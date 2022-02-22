@@ -1,21 +1,39 @@
 import json
+import bmemcached
 
 from fastapi import FastAPI, Request
 
+from config import get_settings
 from services import is_token_valid
 from sql_runner.manager import run_sql
+
+settings = get_settings()
+
+mc = bmemcached.Client(
+    settings.memcachier_servers,
+    username=settings.db_username,
+    password=settings.memcachier_password
+)
+mc.enable_retry_delay(True)
 
 app = FastAPI()
 
 
 @app.get("/")
 async def root_endpoint():
-    """
-    :return:
+    mc.set("foo", "bar")
+    print(mc.get("foo"))
+    print(settings.memcachier_servers)
 
-        "success": bool
-    """
-    return {"success": True}
+
+# @app.get("/")
+# async def root_endpoint():
+#     """
+#     :return:
+#
+#         "success": bool
+#     """
+#     return {"success": True}
 
 
 @app.get("/run-sql")
