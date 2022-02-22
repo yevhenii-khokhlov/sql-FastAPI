@@ -10,6 +10,6 @@ def run_sql(selector, background=False, response_id=None):
     data = [list(item) for item in res]
 
     if background:
-        mc.set(response_id, data)
+        mc.set(response_id, data, time=60)
     else:
         return data

@@ -1,3 +1,5 @@
+import uuid
+
 import pylibmc
 
 from config import get_settings
@@ -42,7 +44,7 @@ def is_token_valid(headers):
 
 
 def generate_response_id():
-    return 'id2'
+    return uuid.uuid4().hex[:16]
 
 
 def get_response_by_id(response_id):
