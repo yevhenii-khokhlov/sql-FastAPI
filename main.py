@@ -10,7 +10,7 @@ from sql_runner.manager import run_sql
 settings = get_settings()
 
 mc = bmemcached.Client(
-    settings.memcachier_servers,
+    servers=[settings.memcachier_servers],
     username=settings.db_username,
     password=settings.memcachier_password
 )
