@@ -47,6 +47,6 @@ def generate_response_id():
     return uuid.uuid4().hex[:16]
 
 
-def get_response_by_id(response_id):
+def get_cached_response_by_id(response_id):
     response = mc.get(response_id)
     return response

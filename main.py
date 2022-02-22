@@ -3,7 +3,7 @@ import json
 from fastapi import FastAPI, Request, BackgroundTasks
 
 from config import get_settings
-from services import is_token_valid, generate_response_id, get_response_by_id
+from services import is_token_valid, generate_response_id, get_cached_response_by_id
 from sql_runner.manager import run_sql
 
 settings = get_settings()
@@ -107,7 +107,7 @@ async def sql_background_response_endpoint(response_id, request: Request):
         if not is_token_valid(request.headers):
             return {"success": False, "error": "invalid api_token"}
 
-        response = get_response_by_id(response_id)
+        response = get_cached_response_by_id(response_id)
 
         if response:
             return {"success": True, "status": 1, "response": response}
@@ -116,4 +116,3 @@ async def sql_background_response_endpoint(response_id, request: Request):
 
     except Exception as err:
         return {"success": False, "error": err.__str__()}
-
