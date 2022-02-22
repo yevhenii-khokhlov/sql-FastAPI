@@ -20,7 +20,7 @@ app = FastAPI()
 
 
 @app.get("/")
-async def root_endpoint():
+def root_endpoint():
     mc.set("foo", "bar")
     print(mc.get("foo"))
     print(settings.memcachier_servers)
