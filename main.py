@@ -1,4 +1,5 @@
 import json
+import socket
 
 from fastapi import FastAPI, Request, BackgroundTasks
 
@@ -83,6 +84,10 @@ async def run_sql_endpoint_background(request: Request, background_tasks: Backgr
         body = json.loads(raw_body)
         selector = body.get('selector')
         response_id = generate_response_id()
+
+        hostname = socket.gethostname()
+        local_ip = socket.gethostbyname(hostname)
+        print('local_ip', local_ip)
 
         background_tasks.add_task(run_sql, selector, background=True, response_id=response_id)
 
