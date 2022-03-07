@@ -50,10 +50,11 @@ def generate_response_id():
 
 def get_cached_response_by_id(response_id):
     response = mc.get(response_id)
+    mc.delete(response_id)
     return response
 
 
 def save_response_to_cache(data, response_id):
     size = sys.getsizeof(data)
     print(size)
-    mc.set(response_id, data, time=60)
+    mc.set(response_id, data)
