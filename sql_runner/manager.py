@@ -10,6 +10,7 @@ def run_sql(selector, background=False, response_id=None):
     cursor.execute(selector)
     res = cursor.fetchall()
     data = [list(item) for item in res]
+    print('RESPONSE:', data)
 
     hostname = socket.gethostname()
     local_ip = socket.gethostbyname(hostname)
